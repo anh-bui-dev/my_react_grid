@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Should render correctly 1`] = `
+<App>
+  <div
+    id="container"
+  >
+    <div
+      className="author"
+    >
+      Jimmy Bui
+    </div>
+    <Jobs>
+      <Loading>
+        <div
+          className="modal-mask"
+        >
+          <div
+            className="loading d-flex justify-content-center"
+          >
+            <div
+              className="spinner-grow text-secondary"
+              role="status"
+            >
+              <span
+                className="sr-only"
+              >
+                Loading...
+              </span>
+            </div>
+          </div>
+        </div>
+      </Loading>
+    </Jobs>
+  </div>
+</App>
+`;
+
+exports[`Jobs Should render correctly 1`] = `
+<Jobs>
+  <Loading>
+    <div
+      className="modal-mask"
+    >
+      <div
+        className="loading d-flex justify-content-center"
+      >
+        <div
+          className="spinner-grow text-secondary"
+          role="status"
+        >
+          <span
+            className="sr-only"
+          >
+            Loading...
+          </span>
+        </div>
+      </div>
+    </div>
+  </Loading>
+</Jobs>
+`;

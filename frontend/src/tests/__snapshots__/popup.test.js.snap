@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Should render correctly 1`] = `
+<App>
+  <div
+    id="container"
+  >
+    <div
+      className="author"
+    >
+      Jimmy Bui
+    </div>
+    <Jobs>
+      <Loading>
+        <div
+          className="modal-mask"
+        >
+          <div
+            className="loading d-flex justify-content-center"
+          >
+            <div
+              className="spinner-grow text-secondary"
+              role="status"
+            >
+              <span
+                className="sr-only"
+              >
+                Loading...
+              </span>
+            </div>
+          </div>
+        </div>
+      </Loading>
+    </Jobs>
+  </div>
+</App>
+`;
+
+exports[`Popup Should render correctly 1`] = `
+<Popup>
+  <div
+    id="popup"
+  >
+    <Bootstrap(Modal)>
+      <Modal
+        animation={true}
+        autoFocus={true}
+        backdrop={true}
+        bsPrefix="modal"
+        dialogAs={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "displayName": "ModalDialog",
+            "render": [Function],
+          }
+        }
+        enforceFocus={true}
+        keyboard={true}
+        manager={
+          BootstrapModalManager {
+            "adjustAndStore": [Function],
+            "containers": Array [],
+            "data": Array [],
+            "handleContainerOverflow": true,
+            "hideSiblingNodes": true,
+            "modals": Array [],
+            "restore": [Function],
+            "scrollbarSize": 0,
+          }
+        }
+        restoreFocus={true}
+        show={false}
+      >
+        <Modal
+          autoFocus={true}
+          backdrop={true}
+          backdropTransition={[Function]}
+          className="modal"
+          containerClassName="modal-open"
+          enforceFocus={true}
+          keyboard={true}
+          manager={
+            BootstrapModalManager {
+              "adjustAndStore": [Function],
+              "containers": Array [],
+              "data": Array [],
+              "handleContainerOverflow": true,
+              "hideSiblingNodes": true,
+              "modals": Array [],
+              "restore": [Function],
+              "scrollbarSize": 0,
+            }
+          }
+          onClick={[Function]}
+          onEnter={[Function]}
+          onEntering={[Function]}
+          onExited={[Function]}
+          onHide={[Function]}
+          onMouseUp={[Function]}
+          renderBackdrop={[Function]}
+          restoreFocus={true}
+          role="dialog"
+          show={false}
+          style={Object {}}
+          transition={[Function]}
+        />
+      </Modal>
+    </Bootstrap(Modal)>
+  </div>
+</Popup>
+`;
