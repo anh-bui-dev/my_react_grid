@@ -4,8 +4,7 @@ import Job from '../components/job';
 
 describe('Job', () => {
   it('Should render correctly', () => {
-    const detail = {};
-    const wrapper = shallow(<Job detail={detail} />);
+    const wrapper = shallow(<Job />);
     expect(wrapper).toMatchSnapshot();
   });
 });

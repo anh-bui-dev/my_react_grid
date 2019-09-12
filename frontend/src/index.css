@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #container {
     height: 500px;
-    width: 600px;
+    width: 700px;
     margin: 5% auto;
 }
 
@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
 }
 
-.modal-content {
+.modal-content, .modal-content .form-control {
   font-size: 13px;
 }
 
@@ -91,4 +91,8 @@ h1, h2, h3, h4, h5, h6 {
 .spinner-grow {
   width: 10rem !important;
   height: 10rem !important;
+}
+
+.noresize {
+  resize: none; 
 }

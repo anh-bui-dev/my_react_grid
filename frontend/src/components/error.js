@@ -10,12 +10,15 @@ class Error extends Component {
     }
 
     render() {
-        return (
-            <div className="alert alert-danger alert-dismissible fade show">
-                <strong>Error:</strong> { this.state.message }.
-                <button type="button" className="close" data-dismiss="alert">&times;</button>
-            </div>
-        )
+        const { message } = this.state;
+        if(message) {
+            return (
+                <div className="alert alert-danger alert-dismissible fade show">
+                    <strong>Error:</strong> { message }.
+                    <button type="button" className="close" data-dismiss="alert">&times;</button>
+                </div>
+            )
+        }
     }
 }
 

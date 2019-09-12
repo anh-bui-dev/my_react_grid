@@ -4,8 +4,7 @@ import Error from '../components/error';
 
 describe('Error', () => {
   it('Should render correctly', () => {
-    const message = "";
-    const wrapper = shallow(<Error detail={message} />);
+    const wrapper = shallow(<Error />);
     expect(wrapper).toMatchSnapshot();
   });
 });

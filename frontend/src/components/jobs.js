@@ -18,7 +18,8 @@ class Jobs extends Component {
         loading: true,
         detail: {},
         columnDefs: [
-                { headerName: "Title", field: "title", width: 500 },
+                { headerName: "Title", field: "title", width: 600 },
+                { headerName: "Type", field: "job_type.name", width: 200 },
                 { headerName: "Location", field: "location", width: 200 },
                 { headerName: "Date", field: "date", cellClass: "grid-number", width: 150,
                     cellRenderer: (data) => {
@@ -42,11 +43,27 @@ class Jobs extends Component {
     
   componentDidMount() {
     // Assume the request will be a haft of second
-    setTimeout(()=>{
+    setTimeout(() => {
       // Get the list of jobs
-      axios.get('http://localhost:4000/jobs')
-      .then(resp => {
-        const jobs = resp.data.sort((a, b) => a.title.localeCompare(b.title));
+      Promise.all([
+        axios.get('http://localhost:4000/jobs'),
+        axios.get('http://localhost:4000/applicants'),
+        axios.get('http://localhost:4000/job_types')
+      ]).then(([resp, resp1, resp3]) => {
+        const jobs = resp.data.map(item => {
+          // Get the list of applicants
+          const applicants = item.applicants.map(applicant => {
+            return resp1.data.find(item1 => item1.id == applicant);
+          });
+
+          // Get job type name
+          const type = resp3.data.find(item3 => item3.id == item.job_type_id);
+
+          delete item.job_type_id;
+          return Object.assign(item, { applicants: applicants }, { job_type: type });
+        }).sort((a, b) => a.title.localeCompare(b.title));
+
+        console.log(jobs);
         this.setState({
           loading: false,
           rowData: jobs
@@ -74,32 +91,32 @@ class Jobs extends Component {
     } else if (loading) {
       return (<Loading />);
     } else {
-        return (
-            <div id="container" className="ag-theme-blue">
-                <h3>Job Board</h3><br/>
-                <AgGridReact
-                    onGridReady={this.onGridReady}
-                    columnDefs = {columnDefs}
-                    rowData = {rowData}
-                    enableSorting = {true}
-                    enableFilter = {true}
-                    paginationAutoPageSize = {true}
-                    pagination = {true}
-                    rowSelection = {'single'}
-                    enableColResize = {true}
-                    onRowDoubleClicked = {this.handlePopup}>
-                </AgGridReact>
-                {
-                    openPopup ? 
-                    <Popup  
-                          title='Job Detail'
-                          openPopup={openPopup}
-                          detail={detail}
-                          handlePopup={this.handlePopup}
-                    />  
-                    : null
-                }
-            </div>
+      return (
+          <div id="container" className="ag-theme-blue">
+              <h3>Job Board</h3><br/>
+              <AgGridReact
+                  onGridReady={this.onGridReady}
+                  columnDefs = {columnDefs}
+                  rowData = {rowData}
+                  enableSorting = {true}
+                  enableFilter = {true}
+                  paginationAutoPageSize = {true}
+                  pagination = {true}
+                  rowSelection = {'single'}
+                  enableColResize = {true}
+                  onRowDoubleClicked = {this.handlePopup}>
+              </AgGridReact>
+              {
+                  openPopup ? 
+                  <Popup  
+                        title='Job Detail'
+                        openPopup={openPopup}
+                        detail={detail}
+                        handlePopup={this.handlePopup}
+                  />  
+                  : null
+              }
+          </div>
         );
     }
   }
