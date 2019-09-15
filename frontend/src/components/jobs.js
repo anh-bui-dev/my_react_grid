@@ -19,9 +19,9 @@ class Jobs extends Component {
         detail: {},
         columnDefs: [
                 { headerName: "Title", field: "title", width: 600 },
-                { headerName: "Type", field: "job_type.name", width: 200 },
-                { headerName: "Location", field: "location", width: 200 },
-                { headerName: "Date", field: "date", cellClass: "grid-number", width: 150,
+                { headerName: "Type", field: "job_type.name" },
+                { headerName: "Location", field: "location" },
+                { headerName: "Date", field: "date", cellClass: "grid-number", 
                     cellRenderer: (data) => {
                       return moment(data.value).format("DD/MM/YYYY");
                   }
@@ -63,7 +63,6 @@ class Jobs extends Component {
           return Object.assign(item, { applicants: applicants }, { job_type: type });
         }).sort((a, b) => a.title.localeCompare(b.title));
 
-        console.log(jobs);
         this.setState({
           loading: false,
           rowData: jobs
@@ -80,8 +79,16 @@ class Jobs extends Component {
   onGridReady = params => {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+
     this.gridApi.sizeColumnsToFit();
     this.gridColumnApi.autoSizeColumns();
+    
+    window.addEventListener("resize", () => {
+      setTimeout(() => {
+        this.gridApi.sizeColumnsToFit();
+        this.gridColumnApi.autoSizeColumns();
+      });
+    });
   }
 
   render() {
@@ -92,7 +99,7 @@ class Jobs extends Component {
       return (<Loading />);
     } else {
       return (
-          <div id="container" className="ag-theme-blue">
+          <div id="grid" className="ag-theme-blue">
               <h3>Job Board</h3><br/>
               <AgGridReact
                   onGridReady={this.onGridReady}

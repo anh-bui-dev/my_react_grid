@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Job from './job';
@@ -14,13 +15,13 @@ class Popup extends Component {
         return (
             <div id='popup'>
                 <Modal show={openPopup} onHide={handlePopup}>
-                    <Modal.Header closeButton>
-                        <Modal.Title><h4>{title}</h4></Modal.Title>
+                    <Modal.Header className="div-responsive" closeButton>
+                        <Modal.Title className="div-responsive"><h4>{title}</h4></Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body className="div-responsive">
                         <Job detail={ detail } />
                     </Modal.Body>
-                    <Modal.Footer>
+                    <Modal.Footer className="div-responsive">
                         <Button className='red-button' onClick={handlePopup}>
                             Close
                         </Button>

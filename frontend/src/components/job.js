@@ -15,43 +15,48 @@ class Job extends Component {
         const { detail } = this.state;
         if(detail) {
             return (
-                <div>
+                <div className="table-responsive div-responsive">
                     <Table borderless>
-                            <tbody>
-                                <tr>
-                                    <td className='label' colSpan={1}>Title:</td>
-                                    <td colSpan={9}>{detail.title}</td>
-                                </tr>
-                                <tr>
-                                    <td className='label' colSpan={1}>Date:</td>
-                                    <td colSpan={4}>{moment(detail.date).format("DD/MM/YYYY")}</td>
-                                    <td className='label' colSpan={1}>Location:</td>
-                                    <td colSpan={4}>{detail.location}</td>
-                                </tr>
-                                <tr>
-                                    <td className='label' colSpan={1}>Description:</td>
-                                    <td colSpan={4}>&nbsp;&nbsp;&nbsp;</td>
-                                    <td className='label' colSpan={1}>Type:</td>
-                                    <td colSpan={4}>{detail.job_type.name}</td>
-                                </tr>
-                                <tr>
-                                    <td colSpan={10}>
-                                        <textarea className="form-control noresize" rows="5" disabled value={detail.description} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className='label' colSpan={1}>Applicants:</td>
-                                    <td colSpan={9}>
-                                        {
-                                            detail.applicants.map((item, index) => {
-                                                if(item)
-                                                return (<span key={index}>{item.name}{index === detail.applicants.length - 1 ? '' : ', '}</span>)
-                                            })
-                                        }
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </Table>
+                        <tbody>
+                            <tr>
+                                <td className='label' colSpan={1}>Title:</td>
+                                <td colSpan={10}>{detail.title}</td>
+                                <td colSpan={1}>&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td className='label' colSpan={1}>Date:</td>
+                                <td colSpan={4}>{moment(detail.date).format("DD/MM/YYYY")}</td>
+                                <td colSpan={1}>&nbsp;&nbsp;&nbsp;</td>
+                                <td className='label' colSpan={1}>Location:</td>
+                                <td colSpan={4}>{detail.location}</td>
+                                <td colSpan={1}>&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td className='label' colSpan={1}>Description:</td>
+                                <td colSpan={4}>&nbsp;&nbsp;&nbsp;</td>
+                                <td colSpan={1}>&nbsp;&nbsp;&nbsp;</td>
+                                <td className='label' colSpan={1}>Type:</td>
+                                <td colSpan={4}>{detail.job_type.name}</td>
+                                <td colSpan={1}>&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colSpan={12}>
+                                    <div className="responsive"><textarea className="form-control noresize" rows="5" disabled value={detail.description} /></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className='label' colSpan={1}>Applicants:</td>
+                                <td colSpan={11}>
+                                    {
+                                        detail.applicants.map((item, index) => {
+                                            if(item)
+                                            return (<span key={index}>{item.name}{index === detail.applicants.length - 1 ? '' : ', '}</span>)
+                                        })
+                                    }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </Table>
                 </div>
             )
         }
